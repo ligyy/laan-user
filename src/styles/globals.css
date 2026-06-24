@@ -1,0 +1,60 @@
+@import "./banner.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 74, 44, 29;
+  --background-start-rgb: 248, 245, 240;
+  --background-end-rgb: 248, 245, 240;
+  /* Brand colors */
+  --brand: #4a2c1d;
+  --brand-dark: #e67e22;
+  --brand-light: #f8f5f0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 37 36% 96%;
+    --foreground: 20 44% 20%;
+    --card: 37 36% 96%;
+    --card-foreground: 20 44% 20%;
+    --popover: 37 36% 96%;
+    --popover-foreground: 20 44% 20%;
+    --primary: 20 44% 20%;
+    --primary-foreground: 37 36% 96%;
+    --secondary: 28 80% 52%;
+    --secondary-foreground: 37 36% 96%;
+    --muted: 37 20% 90%;
+    --muted-foreground: 20 30% 40%;
+    --accent: 44 74% 52%;
+    --accent-foreground: 20 44% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 37 36% 96%;
+    --border: 20 20% 80%;
+    --input: 20 20% 80%;
+    --ring: 28 80% 52%;
+    --chart-1: 25 76% 61%;
+    --chart-2: 30 58% 39%;
+    --chart-3: 20 37% 24%;
+    --chart-4: 35 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-montserrat;
+  }
+}
