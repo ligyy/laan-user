@@ -13,12 +13,7 @@ const socialsData: SocialNetworks[] = [
   {
     id: 3,
     icon: <FaInstagram />,
-    url: "https://www.instagram.com/luxygalleria?igsh=aDhpM2Zoc3FvejQw",
-  },
-  {
-    id: 4,
-    icon: <FaInstagram />,
-    url: "https://www.instagram.com/luxysnackstation?igsh=MXAyNWQwZmZtaHoydQ==",
+    url: "https://www.instagram.com/laan.atelier?utm_source=qr&igsh=bW1tN2Z5azgwc2dq",
   },
   {
     id: 5,
@@ -44,7 +39,7 @@ const Footer = () => {
             <div className="flex flex-col lg:col-span-5 lg:max-w-[480px]">
               <div className="mb-6 -ml-10">
                 <Image
-                  src="/images/laan-footer-logo.png"
+                  src="/uploaded-logo.png"
                   alt="LaaN Atelier Logo"
                   width={100}
                   height={100}
