@@ -44,7 +44,7 @@ const Footer = () => {
             <div className="flex flex-col lg:col-span-5 lg:max-w-[480px]">
               <div className="mb-6 -ml-10">
                 <Image
-                  src="/images/uploaded-logo.png"
+                  src="/images/laan-footer-logo.png"
                   alt="LaaN Atelier Logo"
                   width={100}
                   height={100}

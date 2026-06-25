@@ -19,8 +19,8 @@ const TopNavbar = () => {
             ])}
           >
             <Image
-              src="/images/uploaded-logo.png"
-              alt="Logo"
+              src="/images/laan-footer-logo.png"
+              alt="Laan Atelier Logo"
               width={140}
               height={100}
               className="w-auto h-auto max-h-[75px] object-contain object-left"
