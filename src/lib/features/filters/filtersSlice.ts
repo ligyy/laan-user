@@ -11,7 +11,7 @@ interface FiltersState {
 const initialState: FiltersState = {
   categories: [],
   subcategories: [],
-  priceRange: [0, 5000],
+  priceRange: [0, 100000],
   sizes: [],
 };
 
@@ -28,6 +28,9 @@ export const filtersSlice = createSlice({
       else state.categories.push(action.payload);
       // clear subcategory selections when category changes
       state.subcategories = [];
+    },
+    setSubcategories: (state, action: PayloadAction<string[]>) => {
+      state.subcategories = action.payload;
     },
     toggleSubcategory: (state, action: PayloadAction<string>) => {
       const idx = state.subcategories.indexOf(action.payload);
@@ -48,7 +51,7 @@ export const filtersSlice = createSlice({
     resetFilters: (state) => {
       state.categories = [];
       state.subcategories = [];
-      state.priceRange = [0, 5000];
+      state.priceRange = [0, 100000];
       state.sizes = [];
     },
   },
@@ -57,6 +60,7 @@ export const filtersSlice = createSlice({
 export const {
   setCategories,
   toggleCategory,
+  setSubcategories,
   toggleSubcategory,
   setPriceRange,
   setSizes,

@@ -7,7 +7,7 @@ import PriceSection from "@/components/shop-page/filters/PriceSection";
 import { Button } from "@/components/ui/button";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/lib/store";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { resetFilters } from "@/lib/features/filters/filtersSlice";
 
 const Filters = ({ onApply }: { onApply?: () => void }) => {
@@ -15,8 +15,16 @@ const Filters = ({ onApply }: { onApply?: () => void }) => {
   const router = useRouter();
   const filters = useSelector((state: RootState) => state.filters);
 
+  const searchParams = useSearchParams();
+
   const handleApplyFilter = () => {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams.toString());
+
+    // Clear existing filter params to avoid duplicates when appending
+    params.delete("categories");
+    params.delete("subcategories");
+    params.delete("minPrice");
+    params.delete("maxPrice");
 
     if (filters.categories.length > 0) {
       params.append("categories", filters.categories.join(","));
@@ -27,7 +35,7 @@ const Filters = ({ onApply }: { onApply?: () => void }) => {
     if (filters.priceRange[0] > 0) {
       params.append("minPrice", filters.priceRange[0].toString());
     }
-    if (filters.priceRange[1] < 5000) {
+    if (filters.priceRange[1] < 100000) {
       params.append("maxPrice", filters.priceRange[1].toString());
     }
 

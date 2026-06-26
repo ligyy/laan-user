@@ -76,10 +76,19 @@ const Header = ({ data }: { data: Product }) => {
         </div>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-brand/60 mb-5">
-          {data.description ||
-            "This product is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."}
-        </p>
+        <div className="text-sm sm:text-base text-brand/60 mb-5 space-y-4 break-words">
+          {data.description ? (
+            data.description.split(/\r?\n/).map((line, idx) => (
+              <p key={idx} className="min-h-[1rem]">
+                {line}
+              </p>
+            ))
+          ) : (
+            <p>
+              This product is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.
+            </p>
+          )}
+        </div>
 
         <hr className="h-[1px] border-t-brand/10 mb-5" />
 

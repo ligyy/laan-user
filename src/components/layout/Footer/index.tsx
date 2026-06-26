@@ -2,14 +2,12 @@ import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
 import Image from "next/image";
 import { SocialNetworks } from "./footer.types";
-import { FaFacebookF, FaInstagram, FaTwitter, FaSnapchat, FaYoutube, FaFacebook } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaSnapchat, FaYoutube, FaFacebook, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
-import LinksSection from "./LinksSection";
+
 import LayoutSpacing from "./LayoutSpacing";
 
 const socialsData: SocialNetworks[] = [
-  { id: 1, icon: <FaSnapchat />, url: "https://www.snapchat.com/add/luxygalleria" },
-  { id: 2, icon: <FaFacebookF />, url: "https://facebook.com" },
   {
     id: 3,
     icon: <FaInstagram />,
@@ -54,6 +52,8 @@ const Footer = () => {
                   <Link
                     href={social.url}
                     key={social.id}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-white hover:bg-brand hover:text-white transition-all mr-3 w-7 h-7 rounded-full border border-brand/20 flex items-center justify-center p-1.5"
                   >
                     {social.icon}
@@ -62,10 +62,38 @@ const Footer = () => {
               </div>
             </div>
             <div className="hidden lg:flex col-span-7 justify-end gap-16 xl:gap-32 lg:pl-10">
-              <LinksSection />
+              <div className="flex flex-col mt-5">
+                <h3 className="font-medium text-sm md:text-base uppercase tracking-widest mb-6">Contact Us</h3>
+                <p className="text-brand/60 text-sm md:text-base mb-4 flex items-start">
+                  <FaMapMarkerAlt className="mr-3 mt-1 shrink-0 text-brand/40" />
+                  <span>93/C Convent Road, Kochi, India 683517</span>
+                </p>
+                <p className="text-brand/60 text-sm md:text-base mb-4 flex items-center">
+                  <FaEnvelope className="mr-3 shrink-0 text-brand/40" />
+                  <a href="mailto:laan.curio@gmail.com" className="hover:text-brand transition-colors">laan.curio@gmail.com</a>
+                </p>
+                <p className="text-brand/60 text-sm md:text-base mb-4 flex items-center">
+                  <FaPhoneAlt className="mr-3 shrink-0 text-brand/40" />
+                  <a href="tel:+918129964299" className="hover:text-brand transition-colors">+91 81299 64299</a>
+                </p>
+              </div>
             </div>
-            <div className="grid lg:hidden grid-cols-2 sm:grid-cols-4">
-              <LinksSection />
+            <div className="grid lg:hidden grid-cols-1 mt-8">
+              <div className="flex flex-col">
+                <h3 className="font-medium text-sm md:text-base uppercase tracking-widest mb-6">Contact Us</h3>
+                <p className="text-brand/60 text-sm md:text-base mb-4 flex items-start">
+                  <FaMapMarkerAlt className="mr-3 mt-1 shrink-0 text-brand/40" />
+                  <span>93/C Convent Road, Kochi, India 683517</span>
+                </p>
+                <p className="text-brand/60 text-sm md:text-base mb-4 flex items-center">
+                  <FaEnvelope className="mr-3 shrink-0 text-brand/40" />
+                  <a href="mailto:laan.curio@gmail.com" className="hover:text-brand transition-colors">laan.curio@gmail.com</a>
+                </p>
+                <p className="text-brand/60 text-sm md:text-base mb-4 flex items-center">
+                  <FaPhoneAlt className="mr-3 shrink-0 text-brand/40" />
+                  <a href="tel:+918129964299" className="hover:text-brand transition-colors">+91 81299 64299</a>
+                </p>
+              </div>
             </div>
           </nav>
           <hr className="h-[1px] border-t-brand/10 mb-6" />
