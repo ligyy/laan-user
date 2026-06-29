@@ -130,58 +130,21 @@ export default function TestimonialsCarousel() {
     
     .marquee-track {
       display: flex;
-      gap: 16px;
+      gap: 24px;
       width: max-content;
       will-change: transform;
+      animation: marquee-scroll 40s linear infinite;
     }
     
-    @media (max-width: 767px) {
-      .marquee-track {
-        animation: marquee-scroll 30s linear infinite;
-      }
-      
-      .marquee-container:hover .marquee-track,
-      .marquee-container:active .marquee-track {
-        animation-play-state: paused;
-      }
+    .marquee-container:hover .marquee-track,
+    .marquee-container:active .marquee-track,
+    .marquee-container:focus-within .marquee-track {
+      animation-play-state: paused;
     }
 
     @keyframes marquee-scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
-    }
-
-    .grid-container {
-      display: grid;
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .marquee-container {
-        display: none;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .marquee-container {
-        display: none;
-      }
-    }
-    
-    @media (max-width: 767px) {
-      .grid-container {
-        display: none;
-      }
     }
     
     @media (prefers-reduced-motion: reduce) {
@@ -194,18 +157,18 @@ export default function TestimonialsCarousel() {
       }
       .marquee-item {
         width: 100% !important;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
       }
     }
   `;
 
-  // Provide exactly 6 cards (2 sets of 3) to allow seamless looping on mobile
-  const marqueeCards = [...testimonials, ...testimonials];
+  // Provide 4 sets to allow seamless looping even on ultra-wide desktop monitors
+  const marqueeCards = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
-  const renderCard = (t: Testimonial, isMobile: boolean) => (
+  const renderCard = (t: Testimonial) => (
     <div 
-      className={cn("testimonial-card", isMobile ? "w-full" : "w-full")} 
-      key={t._id + (isMobile ? "-mobile" : "")} 
+      className="testimonial-card w-full"
+      key={t._id + "-" + Math.random().toString(36).substr(2, 9)} 
       tabIndex={0}
       aria-label={`Testimonial from ${t.name}, ${t.title}`}
     >
@@ -266,17 +229,12 @@ export default function TestimonialsCarousel() {
         </p>
       </div>
 
-      {/* Desktop & Tablet Grid */}
-      <div className="grid-container">
-        {testimonials.map(t => renderCard(t, false))}
-      </div>
-
-      {/* Mobile Marquee */}
+      {/* Infinite Marquee */}
       <div className="marquee-container">
         <div className="marquee-track">
           {marqueeCards.map((t, index) => (
-            <div key={`${t._id}-${index}`} className="marquee-item w-[85vw] shrink-0">
-               {renderCard(t, true)}
+            <div key={`${t._id}-${index}`} className="marquee-item w-[85vw] md:w-[450px] shrink-0">
+               {renderCard(t)}
             </div>
           ))}
         </div>
